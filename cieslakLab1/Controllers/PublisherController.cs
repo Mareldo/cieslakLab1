@@ -10,41 +10,41 @@ namespace cieslakLab1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthorController : ControllerBase
+    public class PublisherController : ControllerBase
     {
-        public readonly IRepository<Author> _rep;
+        public readonly IRepository<Publisher> _rep;
 
-        public AuthorController(IRepository<Author> rep)
+        public PublisherController(IRepository<Publisher> rep)
         {
             _rep = rep;
         }
 
-        // GET: api/Author
+        // GET: api/Publisher
         [HttpGet]
         public IActionResult Get()
         {
             return Ok(_rep.GetAll());
         }
 
-        // GET: api/Author/5
-        [HttpGet("{id}", Name = "GetAuthor")]
+        // GET: api/Publisher/5
+        [HttpGet("{id}", Name = "GetPublisher")]
         public IActionResult Get(int id)
         {
-            var author = _rep.FindById(id);
-            if (author == null)
+            var publisher = _rep.FindById(id);
+            if (publisher == null)
                 return NotFound(id);
-            return Ok(author);
+            return Ok(publisher);
         }
 
-        // POST: api/Author
+        // POST: api/Publisher
         [HttpPost]
-        public IActionResult Post([FromBody] Author author)
+        public IActionResult Post([FromBody] Publisher publisher)
         {
             try
             {
-                _rep.Insert(author);
+                _rep.Insert(publisher);
                 _rep.UnitOfWork.SaveChanges();
-                return CreatedAtRoute("GetAuthor", new { id = author.ID }, author);
+                return CreatedAtRoute("GetPublisher", new { id = publisher.ID }, publisher);
             }
             catch (Exception e)
             {
@@ -52,15 +52,15 @@ namespace cieslakLab1.Controllers
             }
         }
 
-        // PUT: api/Author/5
+        // PUT: api/Publisher/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Author author)
+        public IActionResult Put(int id, [FromBody] Publisher publisher)
         {
             try
             {
-                _rep.Update(author);
+                _rep.Update(publisher);
                 _rep.UnitOfWork.SaveChanges();
-                return Ok(author);
+                return Ok(publisher);
             }
             catch (Exception e)
             {

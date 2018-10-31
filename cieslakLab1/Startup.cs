@@ -37,6 +37,8 @@ namespace cieslakLab1
                     opt.UseSqlServer(
                         _configurationRoot.GetConnectionString("DefaultConnection")));
             services.AddScoped<IRepository<Author>, AuthorRepository>();
+            services.AddScoped<IRepository<Genere>, GenereRepository>();
+            services.AddScoped<IRepository<Publisher>, PublisherRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

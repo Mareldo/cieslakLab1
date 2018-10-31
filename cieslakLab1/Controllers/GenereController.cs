@@ -10,41 +10,41 @@ namespace cieslakLab1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthorController : ControllerBase
+    public class GenereController : ControllerBase
     {
-        public readonly IRepository<Author> _rep;
+        public readonly IRepository<Genere> _rep;
 
-        public AuthorController(IRepository<Author> rep)
+        public GenereController(IRepository<Genere> rep)
         {
             _rep = rep;
         }
 
-        // GET: api/Author
+        // GET: api/Genere
         [HttpGet]
         public IActionResult Get()
         {
             return Ok(_rep.GetAll());
         }
 
-        // GET: api/Author/5
-        [HttpGet("{id}", Name = "GetAuthor")]
+        // GET: api/Genere/5
+        [HttpGet("{id}", Name = "GetGenere")]
         public IActionResult Get(int id)
         {
-            var author = _rep.FindById(id);
-            if (author == null)
+            var genere = _rep.FindById(id);
+            if (genere == null)
                 return NotFound(id);
-            return Ok(author);
+            return Ok(genere);
         }
 
-        // POST: api/Author
+        // POST: api/Genere
         [HttpPost]
-        public IActionResult Post([FromBody] Author author)
+        public IActionResult Post([FromBody] Genere genere)
         {
             try
             {
-                _rep.Insert(author);
+                _rep.Insert(genere);
                 _rep.UnitOfWork.SaveChanges();
-                return CreatedAtRoute("GetAuthor", new { id = author.ID }, author);
+                return CreatedAtRoute("GetGenere", new { id = genere.ID }, genere);
             }
             catch (Exception e)
             {
@@ -52,15 +52,15 @@ namespace cieslakLab1.Controllers
             }
         }
 
-        // PUT: api/Author/5
+        // PUT: api/Genere/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Author author)
+        public IActionResult Put(int id, [FromBody] Genere genere)
         {
             try
             {
-                _rep.Update(author);
+                _rep.Update(genere);
                 _rep.UnitOfWork.SaveChanges();
-                return Ok(author);
+                return Ok(genere);
             }
             catch (Exception e)
             {
