@@ -11,4 +11,26 @@ export class FirstComponent {
     { nazwa: "Ola", wartosc: 23 },
     { nazwa: "Tomek", wartosc: 34 }
   ];
+
+  private trybEdycji = false;
+
+  private obiekt = { nazwa: "", wartosc: 0 };
+
+  dodajWiersz() {
+    this.kolekcja.push(Object.assign({}, this.obiekt));
+  }
+
+  edytujWiersz(o) {
+    this.obiekt = o;
+    this.trybEdycji = true;
+  }
+
+  usunWiersz(o) {
+
+  }
+
+  zapiszWiersz() {
+    this.obiekt = { nazwa: "", wartosc: 0 };
+    this.trybEdycji = false;
+  }
 }

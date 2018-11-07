@@ -1,6 +1,16 @@
-<table>
+<label>Nazwa: </label><input [(ngModel)]="obiekt.nazwa" />
+<label>Wartosc: </label><input [(ngModel)]="obiekt.wartosc" />
+
+<button (click)="dodajWiersz()" *ngIf="!trybEdycji" class="btn">Dodaj</button>
+<button (click)="zapiszWiersz()" *ngIf="trybEdycji" class="btn">Zapisz</button>
+
+<table class="table">
   <tr *ngFor="let obj of kolekcja">
     <td>{{obj.nazwa}}</td>
     <td>{{obj.wartosc}}</td>
+    <td>
+      <button (click)="edytujWiersz(obj)" class="btn">Edytuj</button>
+      <button (click)="usunWiersz(obj)" class="btn">Usun</button>
+    </td>
   </tr>
 </table>
