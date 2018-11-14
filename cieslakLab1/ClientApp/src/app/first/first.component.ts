@@ -26,7 +26,7 @@ export class FirstComponent {
   }
 
   usunWiersz(o) {
-
+    this.kolekcja.pop();
   }
 
   zapiszWiersz() {

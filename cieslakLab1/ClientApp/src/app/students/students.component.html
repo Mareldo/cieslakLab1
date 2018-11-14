@@ -1,0 +1,60 @@
+<div class="col-xs-6">
+  <button class="btn btn-primary" (click)="add()">Dodaj</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Lp.</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Stypendium</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students; let i = index">
+        <td>{{i+1}}.</td>
+        <td>{{student.FirstName}}</td>
+        <td>{{student.LastName}}</td>
+        <td>{{student.Grant}}</td>
+        <td>
+          <button class="btn btn-primary" (click)="edit(student)">Edytuj</button>
+          <button class="btn btn-danger" (click)="delete(student)">Usuń</button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Suma</td>
+        <td>{{sum}}</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<div class="col-xs-6">
+  <div *ngIf="editedStudent">
+    <div class="form-group">
+      <label class="control-label col-xs-3">Imię:</label>
+      <div class="col-xs-9">
+        <input class="form-control" [(ngModel)]="editedStudent.FirstName" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-xs-3">Nazwisko:</label>
+      <div class="col-xs-9">
+        <input class="form-control" [(ngModel)]="editedStudent.LastName" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-xs-3">Stypendium:</label>
+      <div class="col-xs-9">
+        <input class="form-control" [(ngModel)]="editedStudent.Grant" />
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success" (click)="save()">Zatwierdź</button>
+      <button class="btn btn-warning" (click)="cancel()">Anuluj</button>
+    </div>
+  </div>
+</div>
