@@ -27,6 +27,9 @@ export class StudentsService {
   }
 
   delete(student: Student) {
-
+    const index = this.collection.indexOf(student, 0);
+    if (index > -1) {
+      this.collection.splice(index, 1);
+    }
   }
 }

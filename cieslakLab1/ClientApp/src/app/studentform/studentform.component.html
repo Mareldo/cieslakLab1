@@ -1,0 +1,27 @@
+<form [formGroup]="form">
+  <div class="form-group">
+    <label class="control-label col-xs-3">Imię:</label>
+    <div class="col-xs-9">
+      <input class="form-control" formControlName="FirstName" />
+      <div *ngIf="!form.get('FirstName').valid && form.get('FirstName').dirty" class="text-danger">Wartość w polu jest wymagana</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3">Nazwisko:</label>
+    <div class="col-xs-9">
+      <input class="form-control" formControlName="LastName" />
+      <div *ngIf="!form.get('LastName').valid && form.get('LastName').dirty" class="text-danger">Wartość w polu jest wymagana</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-3">Stypendium:</label>
+    <div class="col-xs-9">
+      <input class="form-control" formControlName="Grant" />
+      <div *ngIf="!form.get('Grant').valid && form.get('Grant').dirty" class="text-danger">Wartość w polu jest wymagana</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-success" (click)="save()">Zatwierdź</button>
+    <button class="btn btn-warning" (click)="cancel()">Anuluj</button>
+  </div>
+</form>

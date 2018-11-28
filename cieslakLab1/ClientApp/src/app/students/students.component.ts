@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../model/student';
 import { StudentsService } from '../data-services/students.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-students',
@@ -10,44 +11,27 @@ import { StudentsService } from '../data-services/students.service';
 export class StudentsComponent implements OnInit {
 
   students: Student[];
-  editedStudent: Student;
-  sum: number;
+  showForm: Boolean;
 
+  sum: number;
   constructor(private ds: StudentsService) {
-    this.students = [];
   }
   
   ngOnInit() {
     this.students = this.ds.getAll();
-  }
-
-  add() {
-    this.editedStudent = new Student();
-  }
-
-  save() {
-    if (this.editedStudent.Id == undefined)
-      this.ds.insert(this.editedStudent);
-    else
-      this.ds.update(this.editedStudent);
-
     this.compute();
-    this.editedStudent = null;
   }
 
-  cancel() {
-    this.editedStudent = null;
-  }
+  add() {}
 
-  edit(student) {
-    this.editedStudent = Object.assign(new Student(), student);
-  }
+  edit(student) {}
 
   compute() {
     this.sum = this.students.reduce((a, cs) => a + parseFloat(cs.Grant.toString()), 0);
   }
 
-  delete() {
-       
+  delete(student) {
+    this.ds.delete(student);
+    this.compute();
   }
 }

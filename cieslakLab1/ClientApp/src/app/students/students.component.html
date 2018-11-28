@@ -1,5 +1,5 @@
 <div class="col-xs-6">
-  <button class="btn btn-primary" (click)="add()">Dodaj</button>
+  <a class="btn btn-primary" [routerLink]="['/students/create']">Dodaj</a>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -33,28 +33,5 @@
   </table>
 </div>
 <div class="col-xs-6">
-  <div *ngIf="editedStudent">
-    <div class="form-group">
-      <label class="control-label col-xs-3">Imię:</label>
-      <div class="col-xs-9">
-        <input class="form-control" [(ngModel)]="editedStudent.FirstName" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-xs-3">Nazwisko:</label>
-      <div class="col-xs-9">
-        <input class="form-control" [(ngModel)]="editedStudent.LastName" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-xs-3">Stypendium:</label>
-      <div class="col-xs-9">
-        <input class="form-control" [(ngModel)]="editedStudent.Grant" />
-      </div>
-    </div>
-    <div class="form-group">
-      <button class="btn btn-success" (click)="save()">Zatwierdź</button>
-      <button class="btn btn-warning" (click)="cancel()">Anuluj</button>
-    </div>
-  </div>
+ 
 </div>

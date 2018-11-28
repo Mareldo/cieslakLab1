@@ -3,4 +3,11 @@ export class Student {
   public FirstName: string;
   public LastName: string;
   public Grant: number;
+
+  constructor() {
+    this.Id = 0;
+    this.FirstName = "";
+    this.LastName = "";
+    this.Grant = 0;
+  }
 }
