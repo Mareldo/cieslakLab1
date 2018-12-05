@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\data-services\students-http.service.ts" />
     <None Remove="ClientApp\src\app\first\first.component.ts" />
   </ItemGroup>
 
@@ -19,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\data-services\students-http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\first\first.component.ts" />
   </ItemGroup>
 

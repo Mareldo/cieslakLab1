@@ -17,7 +17,7 @@
         <td>{{student.LastName}}</td>
         <td>{{student.Grant}}</td>
         <td>
-          <button class="btn btn-primary" (click)="edit(student)">Edytuj</button>
+          <button class="btn btn-primary" [routerLink]="['/students',student.Id,'edit']">Edytuj</button>
           <button class="btn btn-danger" (click)="delete(student)">Usuń</button>
         </td>
       </tr>
@@ -33,5 +33,5 @@
   </table>
 </div>
 <div class="col-xs-6">
- 
+  <router-outlet></router-outlet>
 </div>

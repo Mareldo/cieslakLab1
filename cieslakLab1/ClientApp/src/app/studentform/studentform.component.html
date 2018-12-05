@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="form-group">
-    <button class="btn btn-success" (click)="save()">Zatwierdź</button>
+    <button class="btn btn-success" [disabled]="!form.valid" (click)="save()">Zatwierdź</button>
     <button class="btn btn-warning" (click)="cancel()">Anuluj</button>
   </div>
 </form>

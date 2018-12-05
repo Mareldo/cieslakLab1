@@ -7,8 +7,9 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { FirstComponent } from './first/first.component';
 import { StudentsComponent } from './students/students.component';
-import { StudentsService } from './data-services/students.service';
-import { StudentsLsService } from './data-services/students-ls.service';
+//import { StudentsService } from './data-services/students.service';
+//import { StudentsLsService } from './data-services/students-ls.service';
+import { StudentsService } from './data-services/students-http.service';
 import { StudentFormComponent } from './studentform/studentform.component';
 import { Student } from './model/student';
 
@@ -25,12 +26,16 @@ import { Student } from './model/student';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'students', pathMatch: 'full' },
-      { path: 'students', component: StudentsComponent },
-      { path: 'students/create', component: StudentFormComponent },
+      {
+        path: 'students', component: StudentsComponent, children: [
+          { path: 'create', component: StudentFormComponent },
+          { path: ':id/edit', component: StudentFormComponent }
+        ]
+      },
       { path: '**', component: StudentsComponent }
     ])
   ],
-  providers: [{ provide: StudentsService, useClass: StudentsLsService }],
+  providers: [{ provide: StudentsService, useClass: StudentsService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

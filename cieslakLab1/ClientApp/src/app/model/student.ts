@@ -4,10 +4,10 @@ export class Student {
   public LastName: string;
   public Grant: number;
 
-  constructor() {
-    this.Id = 0;
-    this.FirstName = "";
-    this.LastName = "";
-    this.Grant = 0;
+  constructor(id: number = 0, firstName: string = "", lastName: string = "", grant: number = 0) {
+    this.Id = id;
+    this.FirstName = firstName;
+    this.LastName = lastName;
+    this.Grant = grant;
   }
 }

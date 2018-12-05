@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../model/student';
-import { StudentsService } from '../data-services/students.service';
+import { StudentsService } from '../data-services/students-http.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-students',
@@ -18,20 +19,22 @@ export class StudentsComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.students = this.ds.getAll();
-    this.compute();
+    this.ds.getAll().subscribe((students) => {
+      this.students = students;
+      this.compute();
+    });
+    this.ds.onResult.subscribe(student => {
+      this.students.push(student);
+      this.compute();
+    })
   }
-
-  add() {}
-
-  edit(student) {}
 
   compute() {
     this.sum = this.students.reduce((a, cs) => a + parseFloat(cs.Grant.toString()), 0);
   }
 
   delete(student) {
-    this.ds.delete(student);
+    //this.ds.delete(student);
     this.compute();
   }
 }
